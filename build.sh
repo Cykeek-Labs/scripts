@@ -1,5 +1,15 @@
 #! /bin/bash
 
+echo "================================"
+echo "|                              |"
+echo "|      Only for LineageOS      |"
+echo "|                              |"
+echo "================================"
+echo
+sleep 2s
+echo
+
+# Function
 build(){
 source build/envsetup.sh
 export USE_CCACHE=1
@@ -11,10 +21,11 @@ lunch lineage_$device-userdebug
 make bacon
 }
 
+# user input
 read -p "Enter your device codename: " device
 read -p "Delete residuals from previous builds?: " options
 
-# clean files
+# Black magic
 case $options in
 	y|Y|yes)echo
 	echo "cleaning out-->target-->product-->$device"
@@ -25,9 +36,9 @@ case $options in
 	;;
 	n|N|no)echo
 	echo "Your wish bitch!!"
-	sleep 1s
+	sleep 2s
 	echo "your Build has started for $device"
+	sleep 5s
 	build
 	;;
 esac
-done
